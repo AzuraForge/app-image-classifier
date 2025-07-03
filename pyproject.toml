@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "azuraforge-app-image-classifier"
+version = "0.1.0"
+description = "An image classification pipeline for AzuraForge using the CIFAR-10 dataset."
+requires-python = ">=3.10"
+dependencies = [
+    "azuraforge-learner @ git+https://github.com/AzuraForge/learner.git@main"
+]
+
+[project.entry-points]
+"azuraforge.pipelines" = { cifar10_classifier = "azuraforge_cifar10.pipeline:Cifar10Pipeline" }
