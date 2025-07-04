@@ -1,0 +1,46 @@
+{
+    "groups": [
+        {
+            "id": "data_sourcing",
+            "name": "Veri Kaynağı (CIFAR-10)",
+            "fields": [
+                {
+                    "id": "train_limit",
+                    "path": "data_sourcing.train_limit",
+                    "label": "Eğitim Veri Limiti",
+                    "type": "text",
+                    "placeholder": "Örn: 1000",
+                    "help_text": "Hızlı eğitim için kullanılacak maksimum eğitim örneği sayısı."
+                },
+                {
+                    "id": "test_limit",
+                    "path": "data_sourcing.test_limit",
+                    "label": "Test Veri Limiti",
+                    "type": "text",
+                    "placeholder": "Örn: 200",
+                    "help_text": "Modeli değerlendirmek için kullanılacak test örneği sayısı."
+                }
+            ]
+        },
+        {
+            "id": "training_params",
+            "name": "Eğitim Parametreleri",
+            "fields": [
+                {
+                    "id": "epochs",
+                    "path": "training_params.epochs",
+                    "label": "Epoch Sayısı",
+                    "type": "text",
+                    "placeholder": "Örn: 10"
+                },
+                {
+                    "id": "lr",
+                    "path": "training_params.lr",
+                    "label": "Öğrenme Oranı (LR)",
+                    "type": "text",
+                    "placeholder": "Örn: 0.001"
+                }
+            ]
+        }
+    ]
+}
