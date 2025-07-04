@@ -5,7 +5,6 @@ import os
 
 from azuraforge_learner import Sequential, Conv2D, MaxPool2D, ReLU, Flatten, Linear
 from azuraforge_learner.pipelines import ImageClassificationPipeline
-
 class Cifar10Pipeline(ImageClassificationPipeline):
     """CIFAR-10 veri setini kullanarak görüntü sınıflandırma yapar."""
 
