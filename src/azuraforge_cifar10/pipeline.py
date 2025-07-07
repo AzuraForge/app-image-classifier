@@ -1,12 +1,20 @@
 import numpy as np
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 from torchvision import datasets
 import os
+from pydantic import BaseModel # BaseModel import edildi
 
 from azuraforge_learner import Sequential, Conv2D, MaxPool2D, ReLU, Flatten, Linear
 from azuraforge_learner.pipelines import ImageClassificationPipeline
+
+from .config_schema import Cifar10Config # Yeni Pydantic modelini import et
+
 class Cifar10Pipeline(ImageClassificationPipeline):
     """CIFAR-10 veri setini kullanarak görüntü sınıflandırma yapar."""
+
+    def get_config_model(self) -> Optional[type[BaseModel]]:
+        """Bu pipeline için Pydantic konfigürasyon modelini döndürür."""
+        return Cifar10Config
 
     def _load_data(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, List[str]]:
         """CIFAR-10 verisini torchvision ile indirir ve hazırlar."""
@@ -27,6 +35,7 @@ class Cifar10Pipeline(ImageClassificationPipeline):
         X_train, X_test = X_train / 255.0, X_test / 255.0
 
         # Eğitim setinin sadece küçük bir kısmını kullanalım (hızlı olması için)
+        # config_schema'dan gelen değerleri kullan
         train_limit = self.config.get("data_sourcing", {}).get("train_limit", 1000)
         test_limit = self.config.get("data_sourcing", {}).get("test_limit", 200)
 
